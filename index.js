@@ -25,36 +25,41 @@ var con = mysql.createConnection({
 app.use(express.static("public"));
 app.post("/get",async(req,res)=>{
     // res.render("index.html")
-    let obj = JSON.parse(req.body);
-    if(obj.Nam==2000){
-   await con.connect(async function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-        var sql = "SELECT * FROM `pre_cal`";
-        con.query(sql, function (err, result) {
-          if (err) throw err;
-        //   console.log(result);
-        res.send(result);
+   //let obj = JSON.parse(req.body);
+   // if(obj.Nam==2000){
+   con.connect(async function (err) {
+            if (err)
+                throw err;
+            console.log("Connected!");
+            var sql = "SELECT * FROM `pre_cal`";
+            con.query(sql, function (err, result) {
+                if (err)
+                    throw err;
+                //   console.log(result);
+                res.send(JSON.stringify(result));
+            });
+            con.end();
         });
-        con.end();
-});
+//}
+// else{
+//     res.send("error");
+// }
 }
-else{
-    res.send("error");
-}}
 );
-app.get("/get/tw",async(req,res)=>{
+app.get("/",async(req,res)=>{
     // res.render("index.html")
-   await con.connect(async function(err) {
-        if (err) throw err;
+   con.connect(async function (err) {
+        if (err)
+            throw err;
         console.log("Connected!");
         var sql = "SELECT * FROM `pre_cal`";
         con.query(sql, function (err, result) {
-          if (err) throw err;
-        //   console.log(result);
-        res.send(result);
+            if (err)
+                throw err;
+            //   console.log(result);
+            res.send(result);
         });
-});
+    });
 });
 app.listen(3000,()=>{
     console.log("server is running");
