@@ -1,0 +1,39 @@
+<!-- <?php
+include("db.php");
+
+
+$sql = "SELECT * FROM pre_cal" wher;
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+   echo "data displayed";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?> -->
+
+<html>
+    <head>
+        <script src="cal.js"></script>
+        <title>premium Calculator</title>
+        <link rel="stylesheet" href="cal.css">
+        
+    </head>
+    <body>
+
+    <h1>premium calculator</h1>
+            <div id="calculator">
+            <input type="text" placeholder="Anual Income" id="ai" name="income" >
+            <input type="text" placeholder="Age"  id="age"  name="age" ><br>
+            <select name="gender" id="gender" >
+                <option value="Male">Male</option>
+                <option value="female">Female</option>
+            </select><br><br>
+            <input type="submit" name="submit" class="sub" value=Calculate>
+          </div>
+        
+    </body>
+</html>
